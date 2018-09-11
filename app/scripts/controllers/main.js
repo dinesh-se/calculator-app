@@ -12,42 +12,42 @@ angular.module('calculatorApp')
     $scope.evalString = "";
     $scope.result = 0;
 
-    var lastResult = 0;
-    var isLastAddedNumber = false;
+    $scope.lastResult = 0;
+    $scope.isLastAddedNumber = false;
+
+    $scope.display = function(number) {
+      $scope.isLastAddedNumber = true;
+      $scope.evalString += number.toString();
+      $scope.result = eval($scope.evalString);
+    }
+
+    $scope.computeOperation = function(operation) {
+      if(!$scope.isLastAddedNumber) {
+        $scope.backspace();
+        $scope.evalString = $scope.evalString ? $scope.evalString += operation : "";
+        return;
+      }
+      $scope.isLastAddedNumber = false;
+      if ($scope.lastResult) {
+        $scope.evalString = $scope.lastResult;
+      }
+      $scope.evalString += operation;
+    }
 
     $scope.equal =  function() {
-      if (!isLastAddedNumber) {
+      if (!$scope.isLastAddedNumber) {
         $scope.backspace();
       }
       $scope.result = eval($scope.evalString);
-      lastResult = $scope.result;
+      $scope.lastResult = $scope.result;
       $scope.evalString = "";
     }
 
     $scope.clear = function() {
       $scope.result = 0;
       $scope.evalString = "";
-      lastResult = 0;
-      isLastAddedNumber = false;
-    }
-
-    $scope.display = function(number) {
-      isLastAddedNumber = true;
-      $scope.evalString += number.toString();
-      $scope.result = eval($scope.evalString);
-    }
-
-    $scope.computeOperation = function(operation) {
-      if(!isLastAddedNumber) {
-        $scope.backspace();
-        $scope.evalString = $scope.evalString ? $scope.evalString += operation : "";
-        return;
-      }
-      isLastAddedNumber = false;
-      if (lastResult) {
-        $scope.evalString = lastResult;
-      }
-      $scope.evalString += operation;
+      $scope.lastResult = 0;
+      $scope.isLastAddedNumber = false;
     }
 
     $scope.backspace = function() {
