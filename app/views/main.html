@@ -1,0 +1,38 @@
+<main class="calculator-container">
+  <article class="calculator-body">
+    <section class="calculator-screen">
+      <div class="calculation-text">{{evalString}}</div>
+      <div class="calculator-typed">{{result}}</div>
+    </section>
+    <section class="calculator-button-row">
+      <button class="button cancel" ng-click="clear()">C</button>
+      <button class="button cancel" ng-click="backspace()">DEL</button>
+      <button class="button operation" ng-click="computeOperation('/')">%</button>
+      <button class="button operation">/</button>
+    </section>
+    <section class="calculator-button-row">
+      <button class="button" ng-click="display(7)">7</button>
+      <button class="button" ng-click="display(8)">8</button>
+      <button class="button" ng-click="display(9)">9</button>
+      <button class="button operation" ng-click="computeOperation('*')">x</button>
+    </section>
+    <section class="calculator-button-row">
+      <button class="button" ng-click="display(4)">4</button>
+      <button class="button" ng-click="display(5)">5</button>
+      <button class="button" ng-click="display(6)">6</button>
+      <button class="button operation" ng-click="computeOperation('-')">−</button>
+    </section>
+    <section class="calculator-button-row">
+      <button class="button" ng-click="display(1)">1</button>
+      <button class="button" ng-click="display(2)">2</button>
+      <button class="button" ng-click="display(3)">3</button>
+      <button class="button operation" ng-click="computeOperation('+')">+</button>
+    </section>
+    <section class="calculator-button-row">
+      <button class="button">.</button>
+      <button class="button" ng-click="display(0)">0</button>
+      <button class="button"><</button>
+      <button class="button operation" ng-click="equal()">=</button>
+      </section>
+    </article>
+  </main>
